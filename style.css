@@ -1,0 +1,78 @@
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(0, 2.25rem);
+    justify-content: center;
+
+}
+    #game-board > div {
+        height:2.25rem;
+        width:2.25rem;
+    }
+
+.tile-goal {
+    background: url("img/spritesheet.jpg")72px 0;
+}
+
+.tile-space {	
+	background: url("img/spritesheet.jpg")-1px 0;
+}
+
+.tile-wall {
+	background: url("img/spritesheet.jpg")36px 0;
+}
+
+.entity-player {
+	background: url("img/spritesheet.jpg")143px 0;
+}
+
+.entity-block {
+	background: url("img/spritesheet.jpg")179px 0;
+}
+
+.entity-block-goal {
+	background: url("img/spritesheet.jpg")107px 0;
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+body {
+	background-color:#404040;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.section-score {
+    display: flex;
+    justify-content: center;
+}
+
+h1, h3 {
+	margin:2rem 0 2rem 0;
+	font-family:Verdana, san-seriff;
+	color: #E97E36;
+	letter-spacing: 0.3rem;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
