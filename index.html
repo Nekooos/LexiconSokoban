@@ -3,6 +3,7 @@
 <head>
 	<title>Lexicon Week </title>
 	<script src="sokoban.js"></script>
+	<script src="timer.js"></script>
 	<script src="sokobanbase.js"></script>
 	<link rel="stylesheet" href="style.css"/>
 
@@ -16,8 +17,19 @@
 			<h3><span id="score">0/0</span><span id="score-text"> to complete level</span></h3>
 		</section>
 
+		<section class="section-timer">
+			<h3><span class="minutes">00</span>.<span class="seconds">00</span></h3>
+		</section>
+		
+		<nav id="map-navigation">
+
+		</nav>
+
 		<section id="game-board">
 			
+		</section>
+		<section class="game-buttons">
+			<button class="reset-button" onclick="resetMap()">Reset Map</button>
 		</section>
 	</div>
 </body>

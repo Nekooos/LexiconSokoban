@@ -1,8 +1,7 @@
 #game-board {
     display: grid;
-    grid-template-columns: repeat(0, 2.25rem);
+    grid-template-columns: repeat(0, 30);
     justify-content: center;
-
 }
     #game-board > div {
         height:2.25rem;
@@ -33,6 +32,20 @@
 	background: url("img/spritesheet.jpg")107px 0;
 }
 
+.game-buttons {
+    display:flex;
+    justify-content: center;
+}
+.reset-button {
+    margin-top: 3rem;
+    width: 12rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    background-color:rgb(208, 209, 205);
+    border-radius: 1rem;
+    color: rgb(128, 65, 13);
+    font-weight: 700;
+}
 
 * {
 	margin: 0;
@@ -61,6 +74,31 @@ header {
     justify-content: center;
 }
 
+.select-maps {
+    background-color: slategrey;
+}
+
+.section-timer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.map-navigation {
+    display: grid;
+    grid-template-columns: repeat(3, 30rem);
+    justify-content: center;
+    background-color: slategrey;
+    min-height: 30rem;
+}
+
+.map {
+    display: grid;
+    grid-template-columns: repeat(0, 2.25rem);
+    justify-content: center;
+    background-color: slategrey;
+}
+
 h1, h3 {
 	margin:2rem 0 2rem 0;
 	font-family:Verdana, san-seriff;
@@ -76,3 +114,9 @@ h3 {
     font-size: 2.5rem;
 }
 
+button {
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+    cursor:pointer;
+}

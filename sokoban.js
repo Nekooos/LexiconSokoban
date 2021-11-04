@@ -1,4 +1,3 @@
-let tileMap;
 window.addEventListener('DOMContentLoaded', () => {
     tileMap = tileMap01; 
     startGame(tileMap);
@@ -8,13 +7,32 @@ let blocksDone = 0;
 let tileGoals = []; 
 
 function startGame(tileMap) {
-    setGameBoardGrid(tileMap.width)
+    drawPreviewMaps();
+    setGameBoardGrid("game-board", tileMap.width, "2.25rem")
     drawGameBoard(tileMap)
     updateScore();
+    startTimer();
 }
 
-function setGameBoardGrid(width) {
-	document.getElementById("game-board").style.gridTemplateColumns = "repeat(" + width +", 2.25rem)";
+function setGameBoardGrid(divName ,width, gridSize) {
+	document.getElementById(divName).style.gridTemplateColumns = "repeat(" + width +", "+ gridSize +")";
+}
+
+function drawPreviewMap(tileMap) {
+
+    let node = document.createElement("DIV");
+    node.classList.add("map");
+    document.getElementById("map-navigation").appendChild(node);
+
+    mapDivs = document.getElementsByClassName("map");
+    lastMapDiv = mapDivs[mapDivs.length-1];
+    lastMapDiv.style.gridTemplateColumns = "repeat(" + tileMap.width +", "+ "1.5rem" +")"
+}
+
+function drawPreviewMaps() {
+    tileMaps.forEach(map => {
+        drawPreviewMap(map);
+    })
 }
 
 function updateScore() {
@@ -81,9 +99,10 @@ function getTileType(tile) {
             return Tiles.Goal;
         case "P":
             return Entities.Character;
-        case " ":
+        case ".":
             return Tiles.Space;
- 
+        case " ":
+            return "background";
         default:
             throw "No matching tile";
     }
@@ -116,6 +135,7 @@ function getPositions(position) {
 function move(newPosition, oldPosition, newPositionPlusOne) {
 
     if(newPosition.classList == Tiles.Space || newPosition.classList == Tiles.Goal) {
+        
         moveCharacter(newPosition, oldPosition);
     } 
     else if(newPosition.classList.contains(Entities.Block)) {
@@ -155,18 +175,35 @@ function checkVictory() {
     updateScore();
     if (blocksDone === tileGoals.length) {
         document.getElementById("score-text").textContent = " level complete!";
+        stopTimer();
     } 
 }
 
 function countBlocksAtGoal() {
     let blocksAtGoal = 0;
-    for(let i = 0; i < tileGoals.length; i++) {
-        if (document.getElementById(tileGoals[i]).classList.contains(Entities.BlockDone)) {
+    tileGoals.forEach(id => {
+        if (document.getElementById(id).classList.contains(Entities.BlockDone)) {
             blocksAtGoal++;
         }
-    }
+    });
     return blocksAtGoal;
 }
+
+function resetMap() {
+    let node = document.getElementById("game-board");
+
+    while (node.firstChild) {
+        node.removeChild(node.lastChild);
+    }
+
+    tileGoals = [];
+    blocksDone = 0;
+    drawGameBoard(tileMap01)
+    updateScore();
+    stopTimer();
+    resetTimer();
+}
+    
 
 
 
